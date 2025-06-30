@@ -40,9 +40,11 @@
   // console.log("data", data)
 </script>
 
-<div>
+<div class="container">
   <h1>Bem vindo ao teste do Svelte Kit!</h1>
-  <p>Essa é uma aplicação simples que apenas faz uma chamada api</p>
+  <p class="subtitle">
+    Essa é uma aplicação simples que apenas faz uma chamada api
+  </p>
   <Input bind:value={inputValue} onInput={handleInput} />
   {#if isLoading}
     <p>Carregando...</p>
@@ -53,3 +55,38 @@
     <p>Nenhum resultado encontrado</p>
   {/if}
 </div>
+
+<style>
+  :global(body) {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #462255;
+    background: linear-gradient(
+      180deg,
+      rgba(70, 34, 85, 1) 20%,
+      rgba(49, 59, 114, 1) 55%,
+      rgba(98, 168, 124, 1) 90%
+    );
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    color: #333;
+  }
+
+  .container {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0 0 0.5rem;
+    color: #C3F3C0;
+    font-size: 2.5rem;
+  }
+  .subtitle {
+    margin: 0 0 2rem;
+    color: #7EE081;
+    font-style: italic;
+  }
+</style>
