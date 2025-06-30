@@ -31,7 +31,7 @@
 
   function handleInput(e) {
     inputValue = e.target.value;
-    // debouncedSearch(inputValue);
+    debouncedSearch(inputValue);
   }
 
   $: if (data.query !== undefined) {
@@ -70,7 +70,6 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     color: #333;
   }
 

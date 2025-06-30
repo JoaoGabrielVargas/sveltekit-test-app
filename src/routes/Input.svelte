@@ -31,7 +31,7 @@
 
   {#if !value}
     <div class="placeholder-animation">
-      <span class="typing-text">{displayText}</span>
+      <span class="typing-text">{displayText}|</span>
     </div>
   {/if}
 </div>
@@ -50,6 +50,7 @@
     background: transparent;
     text-align: center;
     color: #7ee081;
+    font-style: italic;
   }
 
   .placeholder-animation {
@@ -59,33 +60,15 @@
     right: 0;
     bottom: 0;
     display: flex;
-    align-items: center;
     pointer-events: none;
     color: #62a87c;
     font-style: italic;
     font-size: 50px;
-    text-align: center;
+    justify-content: center;
   }
 
   .typing-text {
-    overflow: hidden;
-    white-space: nowrap;
-    margin: 0 auto;
     letter-spacing: 0.15em;
   }
 
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
 </style>
