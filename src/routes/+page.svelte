@@ -1,6 +1,7 @@
 <script>
   import { goto } from "$app/navigation";
   import Input from "./Input.svelte";
+  import AgeComponent from "./AgeComponent.svelte";
 
   // let {data} = $props();
 
@@ -37,7 +38,7 @@
   $: if (data.query !== undefined) {
     isLoading = false;
   }
-  // console.log("data", data)
+  console.log("data", data)
 </script>
 
 <div class="container">
@@ -45,15 +46,12 @@
   <p class="subtitle">
     Essa é uma aplicação simples que apenas faz uma chamada api
   </p>
-  <Input bind:value={inputValue} onInput={handleInput} />
-  {#if isLoading}
-    <p>Carregando...</p>
-  {:else if data.results}
-    <h2>Resultado para "{data.query}":</h2>
-    <pre>{JSON.stringify(data.results, null, 2)}</pre>
-  {:else if data.query && !data.results}
-    <p>Nenhum resultado encontrado</p>
+  {#if data.results}
+    <AgeComponent ageData={data.results}/>
+  {:else}
+    <Input bind:value={inputValue} onInput={handleInput} />
   {/if}
+
 </div>
 
 <style>
