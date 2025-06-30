@@ -38,6 +38,14 @@
   $: if (data.query !== undefined) {
     isLoading = false;
   }
+
+  function resetName () {
+    inputValue = '';
+    goto('/', {
+      replaceState: true,
+      keepFocus: true
+    })
+  }
   console.log("data", data)
 </script>
 
@@ -48,6 +56,7 @@
   </p>
   {#if data.results}
     <AgeComponent ageData={data.results}/>
+    <button on:click={resetName} class="reset-btn">Buscar outro nome</button>
   {:else}
     <Input bind:value={inputValue} onInput={handleInput} />
   {/if}
@@ -81,9 +90,35 @@
     color: #C3F3C0;
     font-size: 2.5rem;
   }
+
   .subtitle {
     margin: 0 0 2rem;
     color: #7EE081;
     font-style: italic;
+  }
+
+  .reset-btn {
+    margin-top: 2rem;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    background: #7EE081;
+    color: #313B72;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(126, 224, 129, 0.3);
+  }
+
+  .reset-btn:hover {
+    background: #62A87C;
+    color: #7EE081;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(126, 224, 129, 0.4);
+  }
+
+  .reset-btn:active {
+    transform: translateY(1px);
   }
 </style>
