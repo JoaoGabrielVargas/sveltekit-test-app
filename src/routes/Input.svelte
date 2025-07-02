@@ -1,11 +1,9 @@
 <script>
   import { onMount } from "svelte";
 
-  export let value = "";
-  export let onInput;
-
+  let {value = "", onInput} = $props();
   let placeholderText = "Digite seu nome...";
-  let displayText = "";
+  let displayText = $state("");
 
   onMount(() => {
     let charIndex = 0;
@@ -27,7 +25,7 @@
 </script>
 
 <div class="input-container">
-  <input type="text" bind:value on:input={onInput} on:focus on:blur />
+  <input type="text" bind:value oninput={onInput} />
 
   {#if !value}
     <div class="placeholder-animation">

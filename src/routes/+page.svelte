@@ -3,13 +3,11 @@
   import Input from "./Input.svelte";
   import AgeComponent from "./AgeComponent.svelte";
 
-  // let {data} = $props();
+  let {data} = $props();
 
-  export let data;
-
-  let inputValue = data.query;
-  let isLoading = false;
-  let timeoutId = null;
+  let inputValue = $state(data.query);
+  let isLoading = $state(false);
+  let timeoutId = $state(null);
 
   function debounce(func, delay) {
     return function (...args) {
@@ -35,10 +33,6 @@
     debouncedSearch(inputValue);
   }
 
-  $: if (data.query !== undefined) {
-    isLoading = false;
-  }
-
   function resetName () {
     inputValue = '';
     goto('/', {
@@ -46,6 +40,11 @@
       keepFocus: true
     })
   }
+  $effect(() => {
+    if (data.query !== undefined) {
+      isLoading = false;
+    }
+  });
   console.log("data", data)
 </script>
 
@@ -56,7 +55,7 @@
   </p>
   {#if data.results}
     <AgeComponent ageData={data.results}/>
-    <button on:click={resetName} class="reset-btn">Buscar outro nome</button>
+    <button onclick={resetName} class="reset-btn">Buscar outro nome</button>
   {:else}
     <Input bind:value={inputValue} onInput={handleInput} />
   {/if}

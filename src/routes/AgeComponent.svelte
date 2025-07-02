@@ -1,5 +1,5 @@
 <script>
-  export let ageData;
+ let {ageData} = $props();
   console.log("ageData", ageData);
 </script>
 
