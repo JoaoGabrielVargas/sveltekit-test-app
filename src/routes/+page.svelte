@@ -49,9 +49,9 @@
 </script>
 
 <div class="container">
-  <h1>Bem vindo ao teste do Svelte Kit!</h1>
+  <h1>Adivinhador de Idades</h1>
   <p class="subtitle">
-    Essa é uma aplicação simples que apenas faz uma chamada api
+    Essa é uma aplicação simples que apenas faz uma chamada api... é sugerida uma idade baseada no nome :)
   </p>
   {#if data.results}
     <AgeComponent ageData={data.results}/>
